@@ -65,7 +65,9 @@ class FallacyDataset(Dataset):
         return len(self.data)
 
     def __getitem__(self, idx):
-        return self.data[idx], self.encoding[idx]
+        item = {key: torch.tensor(val[idx]) for key, val in self.encoding.items()}
+        item['label'] = self.data[idx]['fallacy']
+        return item
 
     @property
     def label_to_fallacy(self):
