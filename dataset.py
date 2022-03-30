@@ -47,7 +47,7 @@ class FallacyDataset(Dataset):
         super().__init__()
         if not filepath.is_file():
             raise Exception("Invalid filepath to csv file")
-        tokenizer = BertTokenizerFast.from_pretrained('bert-base-uncased')
+        tokenizer = BertTokenizerFast.from_pretrained('bert-base-uncased',num_labels = 13)
         data_df = pd.read_csv(filepath)
         if not ("logical_fallacies" in data_df.columns and "source_article" in data_df.columns):
             raise Exception("could not find correct columns in input")
@@ -66,8 +66,10 @@ class FallacyDataset(Dataset):
 
     def __getitem__(self, idx):
         item = {key: torch.tensor(val[idx]) for key, val in self.encoding.items()}
-        item['label'] = self.data[idx]['fallacy']
-        return item
+        # item['label'] = self.data[idx]['fallacy']
+        # labels cannot be strings, so modifying like below
+        item['label'] = self.fallacy_dict[self.data[idx]['fallacy']]
+        return item    
 
     @property
     def label_to_fallacy(self):
@@ -75,4 +77,3 @@ class FallacyDataset(Dataset):
     @property
     def fallacy_to_label(self):
         return self.fallacy_dict
-
