@@ -48,15 +48,16 @@ class FallacyDataset(Dataset):
         if not filepath.is_file():
             raise Exception("Invalid filepath to csv file")
         data_df = pd.read_csv(filepath)
-        if not ("logical_fallacies" in data_df.columns and "source_article" in data_df.columns):
+        if not ("updated_label" in data_df.columns and "source_article" in data_df.columns):
             raise Exception("could not find correct columns in input")
-        # create fallacy <--> labelnum mapping 
-        self.fallacy_list = list(data_df['logical_fallacies'].unique())
+        # create fallacy <--> labelnum mapping
+        self.fallacy_list = list(data_df['updated_label'].unique())
         self.fallacy_dict = {fallacy:i for i, fallacy in enumerate(self.label_to_fallacy)}
-        data_df['label'] = data_df["logical_fallacies"].apply(lambda x: self.fallacy_dict[x])
+        data_df['label'] = data_df["updated_label"].apply(lambda x: self.fallacy_dict[x])
+        data_df = data_df[~data_df.label.astype(int).gt(12)]
 
-        self.data = (data_df[["source_article","logical_fallacies",'label']]
-                .rename(columns= {"source_article":"text","logical_fallacies":"fallacy"})
+        self.data = (data_df[["source_article","updated_label",'label']]
+                .rename(columns= {"source_article":"text","updated_label":"fallacy"})
                 .to_dict(orient="records")
             )
         self.encoding = tokenizer([x['text'] for x in self.data], return_tensors='pt', padding=True, truncation=True)
