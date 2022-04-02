@@ -1,0 +1,22 @@
+***** Running training *****
+  Num examples = 1848
+  Num Epochs = 20
+  Instantaneous batch size per device = 8
+  Total train batch size (w. parallel, distributed & accumulation) = 8
+  Gradient Accumulation steps = 1
+  Total optimization steps = 4620
+drive/My Drive/Colab Notebooks/Project/dataset.py:70: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  item = {key: torch.tensor(val[idx]) for key, val in self.encoding.items()}
+ [2642/4620 05:52 < 04:24, 7.48 it/s, Epoch 11.43/20]
+Epoch	Training Loss	Validation Loss	Accuracy	F1	Precision	Recall
+1	No log	9.333939	0.163333	0.143635	0.165714	0.143561
+2	No log	8.957985	0.180000	0.169879	0.187247	0.167988
+3	0.089400	7.503509	0.143333	0.143948	0.154644	0.151991
+4	0.089400	8.991352	0.153333	0.108008	0.108074	0.135473
+5	0.231100	8.094318	0.140000	0.124338	0.127522	0.128386
+6	0.231100	9.171307	0.170000	0.118671	0.118012	0.137105
+7	0.087400	9.525773	0.180000	0.144977	0.140250	0.171225
+8	0.087400	9.360939	0.173333	0.155218	0.166026	0.169147
+9	0.050300	10.016745	0.173333	0.142790	0.149626	0.151917
+10	0.050300	9.810735	0.203333	0.165744	0.191790	0.166290
+11	0.022700	10.218073	0.173333	0.153407	0.186377	0.170822
