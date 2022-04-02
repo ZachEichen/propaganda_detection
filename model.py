@@ -1,6 +1,9 @@
-import torch 
-from transformers import BertForSequenceClassification
-import transformers
+import torch
+from transformers import DistilBertForSequenceClassification
 
-# changed from bert-base-uncased to match base paper more closely 
-model = BertForSequenceClassification.from_pretrained("microsoft/deberta-base")
+# model = BertForSequenceClassification.from_pretrained('bert-base-uncased')
+model = DistilBertForSequenceClassification.from_pretrained("distilbert-base-uncased", num_labels=13)
+
+# for param in model.base_model.parameters():
+#     param.requires_grad = False
+model.dropout.train()
