@@ -18,14 +18,14 @@ class ProppyDataset(Dataset):
         if not filepath.is_file():
             raise Exception("Invalid filepath to tsv file")
         self.data = []
-        with open(filepath, newline='') as tsvfile:
+        with open(filepath, newline='', encoding='utf-8') as tsvfile:
             reader = csv.reader(tsvfile, dialect=csv.excel_tab)
             for row in tqdm(reader):
                 article_text = row[0]
                 propaganda_label = int(row[14])
                 self.data.append({
                     "text": article_text,
-                    "label": int(propaganda_label ==1) ,
+                    "label": float(propaganda_label == 1),
                 })
         self.encoding = tokenizer([x['text'] for x in self.data], return_tensors='pt', padding=True, truncation=True)
 
