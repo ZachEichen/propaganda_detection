@@ -1,5 +1,6 @@
 import csv
 from pathlib import Path
+import random
 
 import nltk
 import pandas as pd
@@ -24,10 +25,11 @@ class ProppyDataset(Dataset):
             for row in tqdm(reader):
                 article_text = row[0]
                 propaganda_label = int(row[14])
-                self.data.append({
-                    "text": article_text,
-                    "label": float(propaganda_label == 1),
-                })
+                if propaganda_label > 0 or random.random() < 0.125:
+                    self.data.append({
+                        "text": article_text,
+                        "label": float(propaganda_label == 1),
+                    })
         self.encoding = tokenizer([x['text'] for x in self.data], return_tensors='pt', padding=True, truncation=True)
 
     def __len__(self):
