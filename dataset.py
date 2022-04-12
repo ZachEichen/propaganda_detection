@@ -1,6 +1,7 @@
 import csv
 from pathlib import Path
 
+import nltk
 import pandas as pd
 import torch
 from torch.utils.data import Dataset
@@ -78,3 +79,35 @@ class FallacyDataset(Dataset):
     @property
     def fallacy_to_label(self):
         return self.fallacy_dict
+
+
+class SpeechDataset(Dataset):
+    """Dataset for presidential speeches (inference only, no label)"""
+
+    def __init__(self, filepath: Path):
+        super().__init__()
+        if not filepath.is_file():
+            raise Exception("Invalid filepath to tsv file")
+        self.data = []
+        with open(filepath, newline='', encoding='utf-8') as csvfile:
+            reader = csv.reader(csvfile, dialect=csv.excel)
+            for row in tqdm(reader):
+                speech_title = row[0]
+                article_text = row[1]
+                self.data.extend([
+                    {"title": speech_title,
+                     "text": sent,
+                     "label": 0, }
+                    for sent in nltk.sent_tokenize(article_text)
+                ])
+        self.encoding = tokenizer([x['text'] for x in self.data], return_tensors='pt', padding=True, truncation=True)
+
+    def __len__(self):
+        return len(self.data)
+
+    def __getitem__(self, idx):
+        item = {key: torch.tensor(val[idx]) for key, val in self.encoding.items()}
+        item['label'] = self.data[idx]['label']
+        item['title'] = self.data[idx]['title']
+        item['text'] = self.data[idx]['text']
+        return item
