@@ -1,0 +1,21 @@
+,title,speaker,text,neg_p,pos_p
+160,Biden1,Biden,Friends gathered at music clubs and pool halls; at the Monroe family roller-skating rink.,0.73096716,0.26903278
+575,Biden2,Biden,Talk about bullying in schools.,0.73094827,0.26905167
+208,Biden1,Biden,The death toll records by local officials said there were 36 people.,0.73018503,0.26981503
+495,Biden2,Biden,My plan will extend the vaccination requirements that I previously issued in the healthcare field.,0.73009515,0.26990488
+259,Biden1,Biden,"Mother Fletcher talks about how she was only able to attend school until the fourth grade and eventually found work in the shipyards, as a domestic worker.",0.72985554,0.2701444
+179,Biden1,Biden,Words were exchanged.,0.72954404,0.27045602
+32,Trump1,Trump,"We will get through this challenge, just like we always do.",0.7294126,0.27058738
+288,Biden1,Biden,"Second, small businesses are the engines of our economy and the glue of our communities.",0.72829604,0.27170393
+670,Biden3,Biden,The Russian government’s borrowing rate spiked by over 15 percent.,0.7282734,0.2717267
+159,Biden1,Biden,"At the Dreamland Theatre, a young Black couple, holding hands, falling in love.",0.7282581,0.27174193
+630,Biden2,Biden,There’s nothing—not a single thing—we’re unable to do if we do it together.,0.7279522,0.27204782
+328,Biden1,Biden,But all John wanted to do was talk about how I was doing.,0.7275841,0.27241585
+162,Biden1,Biden,"All around, Black pride shared by the professional class and the working class who lived together, side by side, for blocks on end.",0.72735226,0.27264777
+685,Biden3,Biden,"It will hurt their ability to build ships, reducing their ability to compete economically.",0.7271209,0.27287915
+424,Biden1,Biden,"A little bit, sometimes.",0.726963,0.27303705
+712,Biden3,Biden,This is critical to me.,0.72678995,0.27321008
+141,Biden1,Biden,"For much too long, the history of what took place here was told in silence, cloaked in darkness.",0.7267878,0.27321225
+445,Biden2,Biden,"Just weeks in office, we did.",0.7266675,0.27333245
+99,Trump2,Trump,Tens of thousands of ISIS fighters have been killed or captured during my administration.,0.72660106,0.2733989
+57,Trump2,Trump,"He trained terrorist armies, including Hezbollah, launching terrorist strikes against civilian targets.",0.72654706,0.27345294

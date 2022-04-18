@@ -95,7 +95,7 @@ class SpeechDataset(Dataset):
             reader = csv.reader(csvfile, dialect=csv.excel)
             for row in tqdm(reader):
                 speech_title = row[0]
-                article_text = row[1]
+                article_text = row[2]
                 self.data.extend([
                     {"title": speech_title,
                      "text": sent,
