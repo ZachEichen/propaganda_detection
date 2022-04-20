@@ -6,10 +6,10 @@ from copy import deepcopy
 
 class FallacyModel(nn.Module): 
     
-    def __init__(self,n_hiddens=50,n_classes=13): 
+    def __init__(self,n_hiddens=50,n_classes=13,dropout=0.5): 
         super().__init__()
         
-        self.dropout = nn.Dropout(p=0.5) 
+        self.dropout = nn.Dropout(p=dropout) 
         
         self.lin_1 = nn.Linear(768, n_hiddens)
         self.lin_2 = nn.Linear(n_hiddens,n_classes) 

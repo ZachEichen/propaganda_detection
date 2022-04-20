@@ -26,7 +26,7 @@ class ProppyDatasetEmb(Dataset):
                 # print(embedding.keys())
                 wherelist.append((not balance)
                                   or prop_label > 0 
-                                  or random() > .125)
+                                  or random() < .125)
                 if wherelist[-1]: 
                     self.data.append({
                         "label": int(prop_label ==1) ,
